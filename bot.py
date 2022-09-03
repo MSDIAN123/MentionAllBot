@@ -18,38 +18,38 @@ bot_token = os.environ.get("TOKEN")
 client = TelegramClient('client', api_id, api_hash).start(bot_token=bot_token)
 spam_chats = []
 
-@client.on(events.NewMessage(pattern="^/astart$"))
+@client.on(events.NewMessage(pattern="^/allstart"))
 async def start(event):
   await event.reply(
-    "__**I'm MentionAll Bot**, I can mention almost all members in group or channel.",
+    "**I'm CatXGirl Bot**, I can mention almost all members in group or channel.",
     link_preview=False,
     buttons=(
       [
-        Button.url('📣 Channel', 'https://t.me/Mizutsuki_update'),
-        Button.url('📦 Source', 'https://github.com/IMchathush')
+        Button.url('📣 Channel', 'https://t.me/CatXGirlNews'),
+        Button.url('📦 Support', 'https://t.me/CatXGirlSupport')
       ]
     )
   )
 
-@client.on(events.NewMessage(pattern="^/help$"))
+@client.on(events.NewMessage(pattern="^/help"))
 async def help(event):
-  helptext = "**Help Menu of MentionAllBot**\n\nCommand: /mentionall\n__You can use this command with text what you want to mention others.__\n`Example: /mentionall Good Morning!`\n__You can you this command as a reply to any message. Bot will tag users to that replied messsage__.\n\nFollow [@AnjanaMadu](https://github.com/AnjanaMadu) on Github"
+  helptext = "**Help Menu of CatXGirl Mention Filter**\n\nCommand: /mentionall\nYou can use this command with text what you want to mention others.\n`Example: /mentionall Good Morning!`\nYou can you this command as a reply to any message. Bot will tag users to that replied messsage.\n\nFollow [@RishBroProMax](https://github.com/RishBroProMax) on Github"
   await event.reply(
     helptext,
     link_preview=False,
     buttons=(
       [
-        Button.url('📣 Channel', 'https://t.me/Mizutsuki_update'),
-        Button.url('📦 Source', 'https://github.com/IMchathush')
+        Button.url('📣 Channel', 'https://t.me/CatXGirlNews'),
+        Button.url('📦 Support', 'https://t.me/CatXGirlSupport')
       ]
     )
   )
   
-@client.on(events.NewMessage(pattern="^/mentionall ?(.*)"))
+@client.on(events.NewMessage(pattern="/mentionall"))
 async def mentionall(event):
   chat_id = event.chat_id
   if event.is_private:
-    return await event.respond("__This command can be use in groups and channels!__")
+    return await event.respond("This command can be use in groups and channels!")
   
   is_admin = False
   try:
@@ -71,10 +71,10 @@ async def mentionall(event):
     ):
       is_admin = True
   if not is_admin:
-    return await event.respond("__Only admins can mention all!__")
+    return await event.respond("Only admins can mention all!")
   
   if event.pattern_match.group(1) and event.is_reply:
-    return await event.respond("__Give me one argument!__")
+    return await event.respond("Give me one argument!")
   elif event.pattern_match.group(1):
     mode = "text_on_cmd"
     msg = event.pattern_match.group(1)
@@ -82,10 +82,10 @@ async def mentionall(event):
     mode = "text_on_reply"
     msg = await event.get_reply_message()
     if msg == None:
-        return await event.respond("__I can't mention members for older messages! (messages which are sent before I'm added to group)__")
+        return await event.respond("I can't mention members for older messages! (messages which are sent before I'm added to group)")
   else:
-    return await event.respond("__Reply to a message or give me some text to mention others!__")
-  
+    return await event.respond("Reply to a message or give me some text to mention others!")
+ 
   spam_chats.append(chat_id)
   usrnum = 0
   usrtxt = ''
@@ -108,10 +108,10 @@ async def mentionall(event):
   except:
     pass
 
-@client.on(events.NewMessage(pattern="^/cancel$"))
+@client.on(events.NewMessage(pattern="/cancel"))
 async def cancel_spam(event):
   if not event.chat_id in spam_chats:
-    return await event.respond('__There is no proccess on going...__')
+    return await event.respond('There is no proccess on going...')
   else:
     try:
       spam_chats.remove(event.chat_id)
