@@ -18,34 +18,42 @@ bot_token = os.environ.get("TOKEN")
 client = TelegramClient('client', api_id, api_hash).start(bot_token=bot_token)
 spam_chats = []
 
-@client.on(events.NewMessage(pattern="^/allstart"))
+@client.on(events.NewMessage(pattern="^/allstart$"))
 async def start(event):
   await event.reply(
-    "**I'm CatXGirl Bot**, I can mention almost all members in group or channel.",
+    "__**I'm CatXGirl Bot**, I can mention almost all members in group or channel.",
     link_preview=False,
     buttons=(
       [
-        Button.url('📣 Channel', 'https://t.me/CatXGirlNews'),
-        Button.url('📦 Support', 'https://t.me/CatXGirlSupport')
+        Button.url('💖 Cat X Girl News 💖', 'https://t.me/CatXGirlNews'),
+        Button.url('❤️ CatXGirl Support ❤️', 'https://t.me/CatXGirlSupport')
+      ],
+      [
+         Button.url('👨‍💻 Devoloper 👨‍💻', 'https://t.me/ImRishmika'), 
+         Button.url('📦 Source Code 📦', 'https://t.me/RishBropromax/Cat-X-Girl-Bot')
       ]
     )
   )
 
-@client.on(events.NewMessage(pattern="^/help"))
+@client.on(events.NewMessage(pattern="^/help$"))
 async def help(event):
-  helptext = "**Help Menu of CatXGirl Mention Filter**\n\nCommand: /mentionall\nYou can use this command with text what you want to mention others.\n`Example: /mentionall Good Morning!`\nYou can you this command as a reply to any message. Bot will tag users to that replied messsage.\n\nFollow [@RishBroProMax](https://github.com/RishBroProMax) on Github"
-  await event.reply(
+  helptext = "**Help Menu of CatXGirl Mention Filter**\n\nCommand: @all\nYou can use this command with text what you want to mention others.\n`Example: @all Good Morning!`\nYou can you this command as a reply to any message. Bot will tag users to that replied messsage.\n\nFollow [@RishBroProMax](https://github.com/RishBroPromax) on Github"
+  await event.reply
     helptext,
     link_preview=False,
     buttons=(
       [
-        Button.url('📣 Channel', 'https://t.me/CatXGirlNews'),
-        Button.url('📦 Support', 'https://t.me/CatXGirlSupport')
+        Button.url('💖 Cat X Girl News 💖', 'https://t.me/CatXGirlNews'),
+        Button.url('❤️ CatXGirl Support ❤️', 'https://t.me/CatXGirlSupport')
+      ],
+      [
+         Button.url('👨‍💻 Devoloper 👨‍💻', 'https://t.me/ImRishmika'), 
+         Button.url('📦 Source Code 📦', 'https://t.me/RishBropromax/Cat-X-Girl-Bot')
       ]
     )
   )
   
-@client.on(events.NewMessage(pattern="/mentionall"))
+@client.on(events.NewMessage(pattern="^@all ?(.*)"))
 async def mentionall(event):
   chat_id = event.chat_id
   if event.is_private:
@@ -72,7 +80,7 @@ async def mentionall(event):
       is_admin = True
   if not is_admin:
     return await event.respond("Only admins can mention all!")
-  
+ 
   if event.pattern_match.group(1) and event.is_reply:
     return await event.respond("Give me one argument!")
   elif event.pattern_match.group(1):
@@ -85,7 +93,7 @@ async def mentionall(event):
         return await event.respond("I can't mention members for older messages! (messages which are sent before I'm added to group)")
   else:
     return await event.respond("Reply to a message or give me some text to mention others!")
- 
+  
   spam_chats.append(chat_id)
   usrnum = 0
   usrtxt = ''
@@ -108,7 +116,7 @@ async def mentionall(event):
   except:
     pass
 
-@client.on(events.NewMessage(pattern="/cancel"))
+@client.on(events.NewMessage(pattern="^/cancel$"))
 async def cancel_spam(event):
   if not event.chat_id in spam_chats:
     return await event.respond('There is no proccess on going...')
@@ -117,7 +125,7 @@ async def cancel_spam(event):
       spam_chats.remove(event.chat_id)
     except:
       pass
-    return await event.respond('__Stopped.__')
+    return await event.respond('Stopped.')
 
-print(">> BOT STARTED <<")
+print(">> CatXGirl BOT STARTED <<")
 client.run_until_disconnected()
