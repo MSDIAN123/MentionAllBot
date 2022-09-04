@@ -38,7 +38,7 @@ async def start(event):
 @client.on(events.NewMessage(pattern="^/help$"))
 async def help(event):
   helptext = "**Help Menu of CatXGirl Mention Filter**\n\nCommand: @all\nYou can use this command with text what you want to mention others.\n`Example: @all Good Morning!`\nYou can you this command as a reply to any message. Bot will tag users to that replied messsage.\n\nFollow [@RishBroProMax](https://github.com/RishBroPromax) on Github"
-  await event.reply
+  await event.reply(
     helptext,
     link_preview=False,
     buttons=(
