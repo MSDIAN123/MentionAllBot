@@ -1,5 +1,5 @@
 {
-    "name": "Pro Mention All Bot",
+    "name": "AANDAVAR Mention All Bot",
     "description": "A simple mention all for telegram.",
     "env": {
         "TOKEN": {
