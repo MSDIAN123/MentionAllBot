@@ -21,34 +21,34 @@ spam_chats = []
 @client.on(events.NewMessage(pattern="^/allstart$"))
 async def start(event):
   await event.reply(
-    "__**I'm CatXGirl Bot Mention Filter**, I can mention almost all members in group or channel.",
+    "__**I'm AANDAVAR Bot Mention Filter**, I can mention almost all members in group or channel.",
     link_preview=False,
     buttons=(
       [
-        Button.url('💖 Cat X Girl News 💖', 'https://t.me/CatXGirlNews'),
-        Button.url('❤️ CatXGirl Support ❤️', 'https://t.me/CatXGirlSupport')
+        Button.url('💖 AANDAVAR News 💖', 'https://t.me/GIRLSSAFEZONE'),
+        Button.url('❤️ AANDAVAR Support ❤️', 'https://t.me/tamil_crazy_sani')
       ],
       [
-         Button.url('👨‍💻 Devoloper 👨‍💻', 'https://t.me/ImRishmika'), 
-         Button.url('📦 Source Code 📦', 'https://t.me/RishBropromax/Cat-X-Girl-Bot')
+         Button.url('👨‍💻 Devoloper 👨‍💻', 'https://t.me/AANDAVAR8064'), 
+         Button.url('📦 Source Code 📦', 'https://t.me/tamil_crazy_sani')
       ]
     )
   )
 
 @client.on(events.NewMessage(pattern="^/allhelp$"))
 async def help(event):
-  helptext = "**Help Menu of CatXGirl Mention Filter**\n\nCommand: @all\nYou can use this command with text what you want to mention others.\n`Example: @all Good Morning!`\nYou can you this command as a reply to any message. Bot will tag users to that replied messsage.\n\nFollow [@RishBroProMax](https://github.com/RishBroPromax) on Github"
+  helptext = "**Help Menu of AANDAVAR Mention Filter**\n\nCommand: @all\nYou can use this command with text what you want to mention others.\n`Example: @all Good Morning!`\nYou can you this command as a reply to any message. Bot will tag users to that replied messsage.\n\nFollow [@RishBroProMax](https://github.com/RishBroPromax) on Github"
   await event.reply(
     helptext,
     link_preview=False,
     buttons=(
       [
-        Button.url('💖 Cat X Girl News 💖', 'https://t.me/CatXGirlNews'),
-        Button.url('❤️ CatXGirl Support ❤️', 'https://t.me/CatXGirlSupport')
+        Button.url('💖 AANDAVAR News 💖', 'https://t.me/GIRLSSAFEZONE'),
+        Button.url('❤️ AANDAVAR Support ❤️', 'https://t.me/tamil_crazy_sani')
       ],
       [
-         Button.url('👨‍💻 Devoloper 👨‍💻', 'https://t.me/ImRishmika'), 
-         Button.url('📦 Source Code 📦', 'https://t.me/RishBropromax/Cat-X-Girl-Bot')
+         Button.url('👨‍💻 Devoloper 👨‍💻', 'https://t.me/AANDAVAR8064'), 
+         Button.url('📦 Source Code 📦', 'https://t.me/tamil_crazy_sani')
       ]
     )
   )
@@ -127,5 +127,5 @@ async def cancel_spam(event):
       pass
     return await event.respond('Stopped.')
 
-print(">> CatXGirl BOT STARTED <<")
+print(">> AANDAVAR BOT STARTED <<")
 client.run_until_disconnected()
